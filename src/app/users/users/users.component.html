@@ -1,0 +1,120 @@
+<div class="container">
+  <!-- Titulo -->
+  <div class="card">
+    <div class="line">
+      <div class="col-50">
+        <div class="h1">Usuarios</div>
+        <div class="legend">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+      </div>
+      <div class="col-50 right">
+        <button class="primary-btn-out">
+          <img src="../../assets/img/eye.svg" class="icon" /> Previsualizar
+        </button>
+        <button class="primary-btn">
+          <img src="../../assets/img/add.svg" class="icon" /> Agregar nuevo
+          usuario
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usuarios -->
+  <div class="card">
+    <div class="card-header line">
+      <div class="col-30">
+        <img src="../../assets/img/search.svg" class="icon-inline" />
+        <input
+          type="search"
+          class="default-input input-icon"
+          placeholder="Búsqueda"
+          name="filter"
+          [(ngModel)]="filter"
+          (input)="filterUsers()"
+        />
+      </div>
+      <div class="col-60">
+        <select
+          class="default-input select-header"
+          name="usuarios-page"
+          id="usuarios-page"
+        >
+          <option>8 por página</option>
+          <option>16 por página</option>
+          <option>32 por página</option>
+        </select>
+        <select
+          class="default-input select-header"
+          name="ordenamiento"
+          id="ordenamiento"
+        >
+          <option>Ordernar de A - Z</option>
+          <option>Ordernar de Z - A</option>
+        </select>
+        <select class="default-input select-header" name="estado" id="estado">
+          <option>Todos</option>
+          <option>Activo</option>
+          <option>Inactivo</option>
+        </select>
+      </div>
+      <div class="col-10">
+        <img src="../../assets/img/list.svg" class="icon pointer" />
+        <img src="../../assets/img/square.svg" class="icon pointer" />
+      </div>
+    </div>
+    <!-- Tabla de usuarios -->
+    <div class="list-users" *ngIf="viewList">
+      <table class="col-100">
+        <thead>
+          <th class="table-header"></th>
+          <th class="table-header">Foto</th>
+          <th class="table-header">Nombre</th>
+          <th class="table-header">Apellido paterno</th>
+          <th class="table-header">Apellido materno</th>
+          <th class="table-header">Correo</th>
+          <th class="table-header">Rol</th>
+          <th class="table-header">Status</th>
+          <th class="table-header"></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; index as i">
+            <td class="user-row">
+              <img src="../../assets/img/icon-drag.svg" class="icon pointer" />
+            </td>
+            <td class="user-row">
+              <img [src]="user.picture" class="img-user" />
+            </td>
+            <td class="user-row">{{ user.name }}</td>
+            <td class="user-row">{{ user.fathersLastName }}</td>
+            <td class="user-row">{{ user.mothersLastName }}</td>
+            <td class="user-row">{{ user.email | email }}</td>
+            <td class="user-row">{{ user.role.position }}</td>
+            <td class="user-row">
+              <img
+                *ngIf="user.active"
+                (click)="user.active = !user.active"
+                src="../../assets/img/toggle_on.svg"
+                class="icon pointer"
+              />
+              <img
+                *ngIf="!user.active"
+                (click)="user.active = !user.active"
+                src="../../assets/img/toggle_off.svg"
+                class="icon pointer"
+              />
+            </td>
+            <td class="user-row">
+              <img src="../../assets/img/edit.png" class="icon pointer" />
+              <img
+                (click)="deleteUser(user)"
+                src="../../assets/img/trash.svg"
+                class="icon pointer"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

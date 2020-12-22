@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  usersAPI: './assets/data/users.json',
+  rolesAPI: './assets/data/roles.json'
 };
 
 /*

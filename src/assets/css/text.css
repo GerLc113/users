@@ -1,0 +1,13 @@
+.h1 {
+    font-family: "Circular Std Book", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.legend {
+    font-family: "Circular Std Book", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: #969696;
+}
