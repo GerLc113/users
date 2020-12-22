@@ -7,6 +7,6 @@ export interface User {
   mothersLastName: string;
   email: string;
   roleId: number;
-  role?: Rol;
+  role: Rol;
   active: boolean;
 }
